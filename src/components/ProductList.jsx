@@ -1,59 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import API from "../api";
 import ProductCard from "./ProductCard";
+import { SearchContext } from "../context/SearchContext";
+
 
 export default function ProductList() {
+    const { searchValue } = useContext(SearchContext);
+
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
-
   const [loading, setLoading] = useState(true);
 
-  // Filters
-  const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
   const [price, setPrice] = useState(1000);
 
   const fetchProducts = async () => {
-    try {
-      const res = await API.get("/products");
-      setProducts(res.data);
-      setFiltered(res.data); // initial list
-    } catch (err) {
-      console.log("API Error:", err);
-    }
+    const res = await API.get("/products");
+    setProducts(res.data);
+    setFiltered(res.data);
     setLoading(false);
   };
-
-  const addToCart = (product) => {
+const addToCart = (product) => { 
     console.log("Added to cart:", product);
-    alert(product.title + " added to cart!");
-  };
-
+     alert(product.title + " added to cart!"); };
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  // Filtering Logic
+  // 🔥 GLOBAL SEARCH Integration
   useEffect(() => {
     let list = [...products];
 
-    // Search
-    if (search.trim()) {
+    // GLOBAL search from Navbar
+    if (searchValue.trim()) {
       list = list.filter((p) =>
-        p.title.toLowerCase().includes(search.toLowerCase())
+        p.title.toLowerCase().includes(searchValue.toLowerCase())
       );
     }
 
-    // Category
     if (category !== "all") {
       list = list.filter((p) => p.category === category);
     }
 
-    // Price filter
     list = list.filter((p) => p.price <= price);
 
     setFiltered(list);
-  }, [search, category, price, products]);
+  }, [searchValue, category, price, products]);
+
 
   if (loading)
     return (
@@ -66,15 +59,9 @@ export default function ProductList() {
     <div className="max-w-7xl mx-auto px-4 mt-8">
 
       {/* --------------------- FILTER SECTION ----------------------- */}
-      <div className="bg-white p-3  rounded-lg shadow mb-8 grid md:grid-cols-3 gap-6">
+      <div className="bg-white py-3 rounded-lg  mb-8 grid md:grid-cols-3 gap-6">
 
-        {/* Search */}
-        <input
-          type="text"
-          placeholder="Search product..."
-          className="p-3 border rounded"
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        
 
         {/* Category Dropdown */}
         <select
