@@ -17,7 +17,7 @@ const { setSearchValue } = useContext(SearchContext);
     "Home",
     "Appliances",
     "Beauty",
-    "Toys",
+    "Jewelery",
     "Grocery",
   ];
 
