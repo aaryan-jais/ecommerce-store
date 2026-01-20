@@ -8,8 +8,8 @@ export default function App() {
     <Banner/>
     <div className="min-h-screen bg-white py-10">
      
-      <h1 className="text-4xl font-bold text-center text-black">
-        🛒 E-Commerce Store
+      <h1 className="text-3xl md:text-4xl font-bold text-center text-black">
+        🛒 Featured Products
       </h1>
       
       <ProductList />
