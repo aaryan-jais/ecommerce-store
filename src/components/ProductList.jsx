@@ -66,7 +66,7 @@ export default function ProductList() {
     <div className="max-w-7xl mx-auto px-4 mt-8">
 
       {/* --------------------- FILTER SECTION ----------------------- */}
-      <div className="bg-gray-200 p-3  rounded-lg shadow mb-8 grid md:grid-cols-3 gap-6">
+      <div className="bg-white p-3  rounded-lg shadow mb-8 grid md:grid-cols-3 gap-6">
 
         {/* Search */}
         <input
