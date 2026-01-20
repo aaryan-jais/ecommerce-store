@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { SearchContext } from "../context/SearchContext";
 
-export default function Navbar() {
+export default function NavBar() {
   const [showLoginMenu, setShowLoginMenu] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 const { setSearchValue } = useContext(SearchContext);
