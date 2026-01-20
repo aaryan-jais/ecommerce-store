@@ -33,11 +33,11 @@ export default function Banner() {
   const prev = () => setCurrent((current - 1 + slides.length) % slides.length);
 
   return (
-    <div className="w-full bg-gray-100 py-6">
+    <div className="w-full bg-gray-100 py-6 px-2">
       <div className="max-w-7xl mx-auto grid grid-cols-12 gap-4">
 
         {/* ---------------- LEFT CATEGORY MENU ---------------- */}
-        <div className="col-span-3 bg-white rounded-lg shadow p-4">
+        <div className="col-span-12 md:col-span-3 bg-white rounded-lg shadow p-4">
           <h3 className="font-semibold text-lg mb-3">Categories</h3>
 
           <ul className="space-y-2">
@@ -53,7 +53,7 @@ export default function Banner() {
         </div>
 
         {/* ---------------- SLIDER / BANNER ---------------- */}
-        <div className="col-span-9 relative overflow-hidden rounded-lg shadow">
+        <div className="col-span-12 md:col-span-9 relative overflow-hidden rounded-lg shadow">
 
           {/* Slides */}
           <div
